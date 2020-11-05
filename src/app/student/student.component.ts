@@ -1,4 +1,5 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, Input } from '@angular/core';
+import { Student } from '../data/student';
 
 @Component({
   selector: 'app-student',
@@ -7,6 +8,8 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class StudentComponent implements OnInit {
+  @Input() data: Student;
+  public edition = false;
 
   constructor() { }
 

@@ -9,8 +9,6 @@ import { Student } from '../data/student';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PromotionComponent implements OnInit {
-  public selectedStudents: Student[] = [];
-
   public promo: Promotion = {
     label: 'L3 GAIME',
     students: [
@@ -116,6 +114,13 @@ export class PromotionComponent implements OnInit {
       {name: 'ROBIN', id: 'E-100', note: 8}
     ]
   };
+  public selectedStudents: Student[] = [
+    this.promo.students[0],
+    this.promo.students[4],
+    this.promo.students[9],
+    this.promo.students[14],
+    this.promo.students[19],
+  ];
 
   constructor() { }
 

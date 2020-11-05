@@ -1,1 +1,14 @@
-<p>student works!</p>
+<section (dblclick) = "edition = !edition"
+         [class.edition] = "edition"
+>
+  <h1>{{data.name}}</h1>
+  <meter min="0" max="20" low="10" high="14"
+         [value] = "data.note"
+  ></meter>
+  <input min="0" max="20" type="range"
+         [(ngModel)] = "data.note"
+         [disabled]  = "!edition"
+         />
+  <label class="score">{{data.note}}</label>
+  <label class="id">{{data.id}}</label>
+</section>

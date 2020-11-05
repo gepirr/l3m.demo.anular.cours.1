@@ -1,0 +1,54 @@
+:host {
+  > section {
+    position: relative;
+    display: inline-flex;
+    flex-flow: column;
+    width: 120px;
+    height: 80px;
+    border: solid black 1px;
+    box-shadow: 10px 5px 5px grey;
+    margin: 8px;
+    transition: transform .5s, z-index .5s;
+    z-index: 9;
+    background-color: white;
+
+    h1 {
+      margin: 0;
+      width: 100%;
+      text-align: center;
+      background-color: lightcyan;
+      border-bottom: solid grey 1px;
+    }
+
+    meter {
+      width: 100%;
+    }
+
+    input {
+      opacity: 0;
+      transition: opacity .5s;
+    }
+
+    label.id {
+      position: absolute;
+      right: 0px;
+      bottom: 0px;
+    }
+
+    label.score {
+      position: absolute;
+      left: 0px;
+      bottom: 0px;
+    }
+
+  }
+
+  > section.edition {
+    transform: scale(2) rotateY(360deg);
+    z-index: 999;
+
+    input {
+      opacity: 1;
+    }
+  }
+}

@@ -1,23 +1,33 @@
-<h1>Promotion {{promo.label}}</h1>
+<h1>Promotion {{ promo.label }}</h1>
 <section>
-  <label *ngIf="selectedStudents.length === 0">Aucun étudiant n'est sélectionné.</label>
+  <label *ngIf="selectedStudents.length === 0"
+    >Aucun étudiant n'est sélectionné.</label
+  >
   <label *ngIf="selectedStudents.length > 0">
     Les étudiants sélectionnés sont
-    {{selectedStudentsNames}}
+    {{ selectedStudentsNames }}
   </label>
 </section>
-<table>
-  <thead>
-    <th>ID</th>
-    <th>NOM</th>
-    <th>NOTE</th>
-  </thead>
-  <tr *ngFor="let etu of promo.students"
-      [class.selected] = "isSelected(etu)"
-      (click) = "toggleSelect(etu)"
-  >
-    <td>{{etu.id}}</td>
-    <td>{{etu.name}}</td>
-    <td>{{etu.note}}</td>
-  </tr>
-</table>
+
+<section class="promo">
+  <table>
+    <thead>
+      <th>ID</th>
+      <th>NOM</th>
+      <th>NOTE</th>
+    </thead>
+    <tr
+      *ngFor="let etu of promo.students"
+      [class.selected]="isSelected(etu)"
+      (click)="toggleSelect(etu)"
+    >
+      <td>{{ etu.id }}</td>
+      <td>{{ etu.name }}</td>
+      <td>{{ etu.note }}</td>
+    </tr>
+  </table>
+
+  <section class="selected">
+    <app-student *ngFor="let s of selectedStudents" [data]="s"></app-student>
+  </section>
+</section>

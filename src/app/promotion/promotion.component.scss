@@ -1,18 +1,29 @@
-table {
-  border-collapse: collapse;
+section.promo {
+  display: flex;
+  flex-flow: row;
+  width: 100%;
 
-  td {
-    border: solid black 1px;
+  > table {
+    flex: 0 0;
+    border-collapse: collapse;
+
+    td {
+      border: solid black 1px;
+    }
+
+    tr:nth-child(2n) {
+      background-color: beige;
+    }
+
+    tr:hover {
+      background-color: yellow;
+    }
+    tr.selected {
+      background-color: greenyellow;
+    }
   }
 
-  tr:nth-child(2n) {
-    background-color: beige;
-  }
-
-  tr:hover {
-    background-color: yellow;
-  }
-  tr.selected {
-    background-color: greenyellow;
+  > section.selected {
+    flex: 1 1;
   }
 }
