@@ -1,0 +1,13 @@
+<h1>Promotion {{promo.label}}</h1>
+<table>
+  <thead>
+    <th>ID</th>
+    <th>NOM</th>
+    <th>NOTE</th>
+  </thead>
+  <tr *ngFor="let etu of promo.students">
+    <td>{{etu.id}}</td>
+    <td>{{etu.name}}</td>
+    <td>{{etu.note}}</td>
+  </tr>
+</table>
