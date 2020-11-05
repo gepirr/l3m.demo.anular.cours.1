@@ -19,6 +19,14 @@
   >
     <td>{{etu.id}}</td>
     <td>{{etu.name}}</td>
-    <td>{{etu.note}}</td>
+    <td *ngIf="!isSelected(etu)">{{etu.note}}</td>
+    <td *ngIf=" isSelected(etu)">
+      <input type="number"
+             [ngModel]       = "etu.note"
+             (ngModelChange) = "setNote(etu, $event)"
+             min = "0"
+             max = "20"
+      />
+    </td>
   </tr>
 </table>

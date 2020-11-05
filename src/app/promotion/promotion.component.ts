@@ -129,4 +129,8 @@ export class PromotionComponent implements OnInit {
   isSelected(etu: Student): boolean {
     return this.selectedStudent === etu;
   }
+
+  setNote(etu: Student, note: number): void {
+    etu.note = Math.min(20, Math.max(note, 0));
+  }
 }

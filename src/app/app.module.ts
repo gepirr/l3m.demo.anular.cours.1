@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { PromotionComponent } from './promotion/promotion.component';
 import { StudentComponent } from './student/student.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -12,7 +13,8 @@ import { StudentComponent } from './student/student.component';
     StudentComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule // to be able to use ngModel on input tags
   ],
   providers: [],
   bootstrap: [AppComponent]
