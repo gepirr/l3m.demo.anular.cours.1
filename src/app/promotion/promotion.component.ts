@@ -9,7 +9,7 @@ import { Student } from '../data/student';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PromotionComponent implements OnInit {
-  public selectedStudent: Student;
+  public selectedStudents: Student[] = [];
 
   public promo: Promotion = {
     label: 'L3 GAIME',
@@ -122,15 +122,24 @@ export class PromotionComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  select(etu: Student): void {
-    this.selectedStudent = etu;
+  toggleSelect(etu: Student): void {
+    const pos = this.selectedStudents.indexOf(etu);
+    if (pos >= 0) {
+      this.selectedStudents.splice(pos, 1);
+    } else {
+      this.selectedStudents.push(etu);
+    }
   }
 
   isSelected(etu: Student): boolean {
-    return this.selectedStudent === etu;
+    return this.selectedStudents.indexOf(etu) >= 0;
   }
 
   setNote(etu: Student, note: number): void {
     etu.note = Math.min(20, Math.max(note, 0));
+  }
+
+  get selectedStudentsNames(): string {
+    return this.selectedStudents.map(e => e.name).join(', ');
   }
 }
