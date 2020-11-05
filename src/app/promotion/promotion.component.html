@@ -1,11 +1,22 @@
 <h1>Promotion {{promo.label}}</h1>
+<section>
+  <label *ngIf="!selectedStudent">Aucun étudiant n'est sélectionné.</label>
+  <label *ngIf="selectedStudent">
+    L'étudiant nommé {{selectedStudent.name}}
+    et identifié par "{{selectedStudent.id}}"
+    est sélectionné.
+  </label>
+</section>
 <table>
   <thead>
     <th>ID</th>
     <th>NOM</th>
     <th>NOTE</th>
   </thead>
-  <tr *ngFor="let etu of promo.students">
+  <tr *ngFor="let etu of promo.students"
+      [class.selected] = "isSelected(etu)"
+      (click) = "select(etu)"
+  >
     <td>{{etu.id}}</td>
     <td>{{etu.name}}</td>
     <td>{{etu.note}}</td>

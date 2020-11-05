@@ -1,5 +1,6 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Promotion } from '../data/promotion';
+import { Student } from '../data/student';
 
 @Component({
   selector: 'app-promotion',
@@ -8,6 +9,7 @@ import { Promotion } from '../data/promotion';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PromotionComponent implements OnInit {
+  public selectedStudent: Student;
 
   public promo: Promotion = {
     label: 'L3 GAIME',
@@ -120,4 +122,11 @@ export class PromotionComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  select(etu: Student): void {
+    this.selectedStudent = etu;
+  }
+
+  isSelected(etu: Student): boolean {
+    return this.selectedStudent === etu;
+  }
 }
