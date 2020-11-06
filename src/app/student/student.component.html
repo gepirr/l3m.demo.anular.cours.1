@@ -1,7 +1,12 @@
 <section (dblclick) = "edition = !edition"
          [class.edition] = "edition"
 >
-  <h1>{{data.name}}</h1>
+  <h1>
+    <label>{{data.name}}</label>
+    <label (click)="close()">
+      ❌
+    </label>
+  </h1>
   <div class="meter" [style.background] = "getBackground()">
   </div>
   <input min="0" max="20" type="range"

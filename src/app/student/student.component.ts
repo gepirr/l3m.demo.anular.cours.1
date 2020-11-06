@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy, Input } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, Input, Output, EventEmitter } from '@angular/core';
 import { Student } from '../data/student';
 
 @Component({
@@ -8,12 +8,18 @@ import { Student } from '../data/student';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class StudentComponent implements OnInit {
-  @Input() data: Student;
+  @Input()  data: Student;
+  @Output() private onclose = new EventEmitter<void>();
   public edition = false;
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  close(): void {
+    console.log('closing', this.data.name);
+    this.onclose.emit();
   }
 
   getBackground(): string {

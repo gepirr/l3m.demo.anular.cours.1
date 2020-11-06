@@ -28,6 +28,9 @@
   </table>
 
   <section class="selected">
-    <app-student *ngFor="let s of selectedStudents" [data]="s"></app-student>
+    <app-student *ngFor    = "let s of selectedStudents"
+                 [data]    = "s"
+                 (onclose) = "toggleSelect(s)"
+                 ></app-student>
   </section>
 </section>

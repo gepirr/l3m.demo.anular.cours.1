@@ -21,6 +21,17 @@ $jaugeRadius: 10px;
       text-align: center;
       background-color: lightcyan;
       border-bottom: solid grey 1px;
+
+      display: flex;
+      flex-flow: row;
+
+      > label:nth-child(1) {
+        flex: 1 1;
+      }
+
+      > label:nth-child(2) {
+        flex: 0 0;
+      }
     }
 
 
