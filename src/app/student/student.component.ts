@@ -1,4 +1,4 @@
-import { AfterContentInit, AfterViewInit } from '@angular/core';
+import { AfterViewInit } from '@angular/core';
 import { Component, OnInit, ChangeDetectionStrategy, Input, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { Student } from '../data/student';
@@ -9,7 +9,7 @@ import { Student } from '../data/student';
   styleUrls: ['./student.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class StudentComponent implements OnInit, AfterViewInit, AfterContentInit  {
+export class StudentComponent implements OnInit, AfterViewInit  {
   @Input()  data: Student;
   @Output() private onclose = new EventEmitter<void>();
   public edition = false;
@@ -22,13 +22,6 @@ export class StudentComponent implements OnInit, AfterViewInit, AfterContentInit
   }
 
   ngOnInit(): void {
-    this.open.subscribe(
-      o => console.log(this.data.name, 'now', o ? 'opened' : 'closed')
-    );
-  }
-
-  ngAfterContentInit(): void {
-    // this.open.next( true );
   }
 
   ngAfterViewInit(): void {
