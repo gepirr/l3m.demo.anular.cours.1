@@ -1,4 +1,6 @@
-import { Component, OnInit, ChangeDetectionStrategy, Input, Output, EventEmitter } from '@angular/core';
+import { AfterContentInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, Input, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 import { Student } from '../data/student';
 
 @Component({
@@ -7,19 +9,46 @@ import { Student } from '../data/student';
   styleUrls: ['./student.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class StudentComponent implements OnInit {
+export class StudentComponent implements OnInit, AfterViewInit, AfterContentInit  {
   @Input()  data: Student;
   @Output() private onclose = new EventEmitter<void>();
   public edition = false;
 
-  constructor() { }
+  // Animations / transitions
+  public open = new BehaviorSubject<boolean>(false);
+  @ViewChild('root') root: ElementRef<HTMLElement>;
+
+  constructor() {
+  }
 
   ngOnInit(): void {
+    this.open.subscribe(
+      o => console.log(this.data.name, 'now', o ? 'opened' : 'closed')
+    );
+  }
+
+  ngAfterContentInit(): void {
+    // this.open.next( true );
+  }
+
+  ngAfterViewInit(): void {
+    // Quand le navigateur aura le temps, on passera open à true
+    // Cela permet qu'au départ il soit à false
+    // On est obligé d'attendre un un peu sinon tout se passe dans le même cycle
+    // et le moteur d'Angular ne détectera pas le changement
+    // C'est particulier au fait qu'on soit à l'étape ngAfterViewInit
+    // Voir : https://angular.io/guide/lifecycle-hooks
+    setTimeout( () => this.open.next( true ) );
+
   }
 
   close(): void {
     console.log('closing', this.data.name);
-    this.onclose.emit();
+    this.open.next(false);
+    this.root.nativeElement.addEventListener(
+      'transitionend',
+      () => this.onclose.emit()
+    );
   }
 
   getBackground(): string {

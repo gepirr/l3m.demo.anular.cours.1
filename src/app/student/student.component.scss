@@ -2,6 +2,7 @@ $jaugeH: 20px;
 $jaugeRadius: 10px;
 
 :host {
+
   > section {
     position: relative;
     display: inline-flex;
@@ -14,6 +15,7 @@ $jaugeRadius: 10px;
     transition: transform .5s, z-index .5s;
     z-index: 9;
     background-color: white;
+    transform: perspective(9cm) scale(0) rotateX(45deg) rotateY(45deg);
 
     h1 {
       margin: 0;
@@ -80,4 +82,15 @@ $jaugeRadius: 10px;
       opacity: 1;
     }
   }
+
+  > section.open {
+    transform: perspective(9cm) scale(1) rotate(0);
+  }
+
+  > section.closing {
+    transform: perspective(9cm) scale(0) rotateX(45deg) rotateY(45deg);
+    transition: transform 1s;
+  }
+
 }
+
