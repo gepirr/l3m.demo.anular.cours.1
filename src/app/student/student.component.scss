@@ -40,21 +40,6 @@ $jaugeRadius: 10px;
         height: $jaugeH;
         overflow: hidden;
       }
-      .low {
-        background-color: red;
-      }
-
-      .ok {
-        background-color: yellow;
-      }
-
-      .high {
-        background-color: greenyellow;
-      }
-
-      .max {
-        border-radius: .5em;
-      }
     }
 
     input {
