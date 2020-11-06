@@ -74,22 +74,17 @@ $jaugeRadius: 10px;
 
   }
 
-  > section.edition {
-    transform: scale(2) rotateY(360deg);
+  > section.open {
+    transform: perspective(9cm) scale(1) rotate(0);
+  }
+
+  > section.open.edition {
+    transform: perspective(9cm) scale(2) rotateY(360deg);
     z-index: 999;
 
     input {
       opacity: 1;
     }
-  }
-
-  > section.open {
-    transform: perspective(9cm) scale(1) rotate(0);
-  }
-
-  > section.closing {
-    transform: perspective(9cm) scale(0) rotateX(45deg) rotateY(45deg);
-    transition: transform 1s;
   }
 
 }
