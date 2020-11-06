@@ -9,6 +9,7 @@ section.promo {
 
     td {
       border: solid black 1px;
+      white-space: nowrap;
     }
 
     tr:nth-child(2n) {

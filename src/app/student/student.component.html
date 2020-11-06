@@ -2,9 +2,15 @@
          [class.edition] = "edition"
 >
   <h1>{{data.name}}</h1>
-  <meter min="0" max="20" low="10" high="14"
-         [value] = "data.note"
-  ></meter>
+  <div class="meter">
+    <div
+        [style.width] = "(data.note * 5.5) + 'px'"
+        [class.low]   = "data.note < 10"
+        [class.ok]    = "data.note >= 10 && data.note <= 14"
+        [class.high]  = "data.note > 14"
+        [class.max]   = "data.note == 20"
+    ></div>
+  </div>
   <input min="0" max="20" type="range"
          [(ngModel)] = "data.note"
          [disabled]  = "!edition"

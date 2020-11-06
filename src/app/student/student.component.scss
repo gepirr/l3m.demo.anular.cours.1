@@ -1,3 +1,6 @@
+$jaugeH: 20px;
+$jaugeRadius: 10px;
+
 :host {
   > section {
     position: relative;
@@ -20,8 +23,38 @@
       border-bottom: solid grey 1px;
     }
 
-    meter {
-      width: 100%;
+
+    .meter {
+      width: 110px;
+      height: $jaugeH;
+      border: solid black 2px;
+      border-radius: $jaugeRadius;
+      margin: 5px;
+      margin-bottom: 0px;
+      padding: 0;
+
+      > div {
+        border-top-left-radius: $jaugeRadius;
+        border-bottom-left-radius: $jaugeRadius;
+        margin: 0;
+        height: $jaugeH;
+        overflow: hidden;
+      }
+      .low {
+        background-color: red;
+      }
+
+      .ok {
+        background-color: yellow;
+      }
+
+      .high {
+        background-color: greenyellow;
+      }
+
+      .max {
+        border-radius: .5em;
+      }
     }
 
     input {
