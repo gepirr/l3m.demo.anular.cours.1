@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { PromoManagerService } from './promo-manager.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'projet-promo';
+
+  constructor(private man: PromoManagerService) {
+  }
+
+  load(label: string) {
+    this.man.load(label, 20);
+  }
 }

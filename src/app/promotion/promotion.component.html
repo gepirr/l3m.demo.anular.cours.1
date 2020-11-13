@@ -1,12 +1,12 @@
-<h1>Promotion {{ promo.label }}</h1>
+<h1>Promotion {{ labelPromo | async }}</h1>
 <section>
-  <label *ngIf="selectedStudents.length === 0"
-    >Aucun étudiant n'est sélectionné.</label
-  >
-  <label *ngIf="selectedStudents.length > 0">
+  <label *ngIf="(selectedStudents | async).length > 0; else labelNoStudent">
     Les étudiants sélectionnés sont
     {{ selectedStudentsNames }}
   </label>
+  <ng-template #labelNoStudent>
+    Aucun étudiant n'est sélectionné.
+  </ng-template>
 </section>
 
 <section class="promo">
@@ -17,7 +17,7 @@
       <th>NOTE</th>
     </thead>
     <tr
-      *ngFor="let etu of promo.students"
+      *ngFor="let etu of students | async"
       [class.selected]="isSelected(etu)"
       (click)="toggleSelect(etu)"
     >
@@ -28,7 +28,7 @@
   </table>
 
   <section class="selected">
-    <app-student *ngFor    = "let s of selectedStudents"
+    <app-student *ngFor    = "let s of selectedStudents | async"
                  [data]    = "s"
                  (onclose) = "toggleSelect(s)"
                  ></app-student>
