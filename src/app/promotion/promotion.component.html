@@ -1,13 +1,4 @@
 <h1>Promotion {{ labelPromo | async }}</h1>
-<section>
-  <label *ngIf="(selectedStudents | async).length > 0; else labelNoStudent">
-    Les étudiants sélectionnés sont
-    {{ selectedStudentsNames }}
-  </label>
-  <ng-template #labelNoStudent>
-    Aucun étudiant n'est sélectionné.
-  </ng-template>
-</section>
 
 <section class="promo">
   <table>
@@ -33,4 +24,14 @@
                  (onclose) = "toggleSelect(s)"
                  ></app-student>
   </section>
+</section>
+
+<section>
+  <label *ngIf="(selectedStudents | async).length > 0; else labelNoStudent">
+    Les étudiants sélectionnés sont
+    {{ selectedStudentsNames }}
+  </label>
+  <ng-template #labelNoStudent>
+    Aucun étudiant n'est sélectionné.
+  </ng-template>
 </section>

@@ -12,7 +12,7 @@ export class AppComponent {
   constructor(private man: PromoManagerService) {
   }
 
-  load(label: string) {
+  load(label: string): void {
     this.man.load(label, 20);
   }
 }

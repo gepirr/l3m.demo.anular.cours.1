@@ -145,7 +145,7 @@ export class PromoManagerService {
 
   /**
    * Select a student if it isn't, unselect it otherweise
-   * @param etu the reference of the studeznt to be selected or unselected
+   * @param etu the reference of the student to be selected or unselected
    */
   toggleSelect(etu: Student): void {
     const [P, L] = this.promoDescrSubj.value;
@@ -180,6 +180,9 @@ export class PromoManagerService {
     ]);
   }
 
+  /**
+   * A computed attribute that join the selected student's names with a comma
+   */
   get selectedStudentsNames(): string {
     return this.promoDescrSubj.value[1].map(e => e.name).join(', ');
   }

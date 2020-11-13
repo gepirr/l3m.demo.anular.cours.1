@@ -32,7 +32,6 @@ export class StudentComponent implements OnInit, AfterViewInit  {
     // C'est particulier au fait qu'on soit à l'étape ngAfterViewInit
     // Voir : https://angular.io/guide/lifecycle-hooks
     setTimeout( () => this.open.next( true ) );
-
   }
 
   close(): void {
